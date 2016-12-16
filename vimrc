@@ -3,10 +3,6 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 " 定义快捷键的前缀，即<Leader>
 let mapleader=";"
 
-" 开启文件类型侦测
-filetype on
-" 根据侦测到的不同类型加载对应的插件
-filetype plugin on
 " 定义快捷键到行首和行尾
 nmap LB 0
 nmap LE $
@@ -92,8 +88,6 @@ let g:Powerline_colorscheme='solarized256'
 syntax enable
 " 允许用指定语法高亮配色方案替换默认方案
 syntax on
-" 自适应不同语言的智能缩进
-filetype indent on
 " 将制表符扩展为空格
 set expandtab
 " 设置编辑时制表符占用空格数
@@ -116,9 +110,10 @@ set foldmethod=syntax
 " 启动 vim 时关闭折叠代码
 set nofoldenable
 
-
 " 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
- nmap <Leader>fl :NERDTreeToggle<CR>
+" 回车打开文件， r键刷新， I键 显示/隐藏文件， m
+" 出现创建/删除/剪切/拷贝操作列表      
+nmap <Leader>fl :NERDTreeToggle<CR>
 " 设置NERDTree子窗口宽度
  let NERDTreeWinSize=32
 " 设置NERDTree子窗口位置
@@ -131,6 +126,9 @@ let NERDTreeMinimalUI=1
 let NERDTreeAutoDeleteBuffer=1
 
 " 显示/隐藏 MiniBufExplorer 窗口
+" 在buffer上面 按d键可以删除buffer
+" 在某个buffer上面 键入 s 命，会在此window下方生成一个新window，键入 v
+" 命令，会在右方新建一个窗口
 map <Leader>bl :MBEToggle<cr>
 " buffer 切换快捷键
 "noremap <C-Tab> :MBEbn<cr>
@@ -195,6 +193,9 @@ Plugin 'vim-scripts/vimprj'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdcommenter'
+"DrawIt ASCII 风格的注释
+"<leader> di 开启注释 <leader> ds 关闭注释
+"方向键控制绘制线条 space 用于绘制或擦除字符 
 Plugin 'vim-scripts/DrawIt'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -205,6 +206,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'gcmt/wildfire.vim'
 Plugin 'sjl/gundo.vim'
+"<leader> <leader> fa  会将a字母用标签显示 选择标签就可以跳转到相应的地点
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'lilydjwg/fcitx.vim'
@@ -214,7 +216,13 @@ Plugin 'othree/html5.vim'
 Plugin 'posva/vim-vue'
 " 插件列表结束
 call vundle#end()
-filetype plugin indent on
+" 开启文件类型侦测
+filetype on
+" 根据侦测到的不同类型加载对应的插件
+filetype plugin on
+"filetype plugin indent on
+" 自适应不同语言的智能缩进
+filetype indent on
 
 "书签快捷键
 let g:SignatureMap = {
