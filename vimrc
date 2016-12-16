@@ -105,11 +105,11 @@ set softtabstop=4
 " 随 vim 自启动
 "let g:indent_guides_enable_on_vim_startup=1
 " 从第二层开始可视化显示缩进
-"let g:indent_guides_start_level=2
+"let g:indent_guides_start_level=1
 " 色块宽度
 "let g:indent_guides_guide_size=1 "这个有时会报错
 " 快捷键 i 开/关缩进可视化
-":nmap <silent> <Leader>i <Plug>IndentGuidesToggle
+"nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 " 基于缩进或语法进行代码折叠
 "set foldmethod=indent
 set foldmethod=syntax
@@ -196,7 +196,7 @@ Plugin 'dyng/ctrlsf.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/DrawIt'
-"Plugin 'SirVer/ultisnips'
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'Shougo/neocomplcache.vim'
@@ -260,7 +260,7 @@ let g:tagbar_type_cpp = {
      \ ],
      \ 'sro'        : '::',
      \ 'kind2scope' : {
-         \ 'f' : 'functions',
+         \ 'f' : 'funtions',
          \ 'c' : 'classes',
          \ 'm' : 'methods',
          \ 'p' : 'properties',
@@ -284,3 +284,6 @@ set undofile
 map <leader>ss :mksession! my.vim<cr> :wviminfo! my.viminfo<cr>
 " 恢复快捷键
 map <leader>rs :source my.vim<cr> :rviminfo my.viminfo<cr>
+"vim-multiple-cursors 快捷键
+let g:multi_cursor_next_key='<S-n>'
+let g:multi_cursor_skip_key='<S-k>'
